@@ -15,17 +15,17 @@ function displayMsg(message) {
 
 saveBtn.on('click', function (event) {
     event.preventDefault()
-    if (textArea === '') {
-        displayMsg('Please add something to save on your calender!')
-    } else 
-        displayMsg('Saved to localstorage!')
-    $('.text-area').each(function () {
-        inputs = textArea.val();
+    inputs = textArea.val();
 
-        localStorage.setItem('text-area', inputs);
-        localStorage.getItem(inputs)
+        localStorage.setItem('inputs', inputs);
+        textArea.textContent = localStorage.getItem('text-area')
         console.log(inputs);
         console.log(JSON.stringify(textArea.val()));
+        if (textArea === '') {
+            displayMsg('Please add something to save on your calender!')
+        } else 
+            displayMsg('Saved to localstorage!')
+            console.log(displayMsg())
     });
-});
+
 
