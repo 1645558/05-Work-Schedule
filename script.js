@@ -2,7 +2,9 @@ var containerEL = $('.container');
 var saveBtn = $('.saveBtn');
 var textArea = $('.text-area')
 var msgDiv = $('.msg')
-var inputs = [];
+var input = {
+    text: textArea.val()
+};
 
 //Styling
 $('.text-area').css({ 'width': '1000px', 'height': '75px' });
@@ -15,26 +17,29 @@ function displayMsg(message) {
 }
 
 function displayData() {
-    for (i = 0; i < inputs.length; i++)
-        var saveData = inputs;
-        JSON.parse(localStorage.getItem(saveData))
+    input = textArea.val();
 
+        var saveData = JSON.parse(localStorage.getItem('inputs')) || [];
+        saveData.push(input);
 }
 
 //function for saving input to local storage upon save button click
-saveBtn.on('click', function () {
-    inputs = textArea.val();
-    localStorage.setItem('text-area', inputs);
+saveBtn.on('click', function (event) {
+    event.preventDefault();
+    input = textArea.val();
 
-        console.log(JSON.stringify(textArea.val()));
-        console.log(inputs);
+    localStorage.setItem('text-area', JSON.stringify(input));
 
-        if (inputs === '') {
-            displayMsg('Please add something to save on your calender!');
-        } else 
-            displayMsg('Saved to localstorage!');
-            console.log(displayMsg());
-    });
     displayData();
+
+    console.log(JSON.stringify(input));
+    console.log(input);
+
+    if (input === '') {
+        displayMsg('Please add something to save on your calender!');
+    } else
+        displayMsg('Saved to localstorage!');
+    console.log(displayMsg());
+});
 
 
