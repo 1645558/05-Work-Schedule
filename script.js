@@ -14,7 +14,7 @@ function timeBlocks() {
     $('.time-block').each(function () {
         var currentHour = parseInt($(this).attr('id'));
 
-        console.log(this)
+        //console.log(this)
 
         if (currentHour > hour) {
             $(this).addClass('future');
@@ -27,7 +27,17 @@ function timeBlocks() {
 }
 
 function displayData() {
+    $('.hour').each(function() {
+        var currentHour = $(this).text();
+        var currTextArea = localStorage.getItem(currentHour);
+        
 
+        if (currTextArea !== null) {
+            $(this).siblings('.text-area').val(currTextArea)
+        }
+        console.log(currTextArea)
+
+    })
 }
 
 //Styling
@@ -45,3 +55,4 @@ saveBtn.on('click', function () {
     console.log(hour);
 });
 timeBlocks();
+displayData();
