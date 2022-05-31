@@ -15,8 +15,8 @@ function displayData() {
 
 //saving input to local storage upon save button click
 saveBtn.on('click', function () {
-    var text = containerEL.find('.text-area').val();
-    var hour = $('textarea').closest().attr('id');
+    var text = $(this).siblings('.text-area').val();
+    var hour = $(this).siblings('.text-area').text;
 
     localStorage.setItem(hour, text);
     console.log(hour);
