@@ -7,6 +7,29 @@ var msgDivEL = $('.msg');
 var today = moment()
 $('#currentDay').text(today.format('dddd MMMM Do YYYY'))
 
+//Color coding to show time of day
+function timeBlocks() {
+    var hour = moment().hours();
+
+    $('.time-block').each(function () {
+        var currentHour = parseInt($(this).attr('id'));
+
+        console.log(this)
+
+        if (currentHour > hour) {
+            $(this).addClass('future');
+        } else if (currentHour === hour) {
+            $(this).addClass('present');
+        } else {
+            $(this).addClass('past');
+        }
+    })
+}
+
+function displayData() {
+
+}
+
 //Styling
 $('.text-area').css({ 'width': '1000px', 'height': '75px' });
 $('.time-area').css('border-bottom', '2px dotted');
@@ -21,4 +44,4 @@ saveBtn.on('click', function () {
     localStorage.setItem(hour, text);
     console.log(hour);
 });
- 
+timeBlocks();
