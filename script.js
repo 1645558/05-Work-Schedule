@@ -2,9 +2,7 @@ var containerEL = $('.container');
 var saveBtn = $('.saveBtn');
 var textArea = $('.text-area')
 var msgDiv = $('.msg')
-var input = {
-    text: textArea.val()
-};
+var input = {};
 
 //Styling
 $('.text-area').css({ 'width': '1000px', 'height': '75px' });
@@ -27,6 +25,12 @@ function displayData() {
 saveBtn.on('click', function (event) {
     event.preventDefault();
     input = textArea.val();
+    var text = textArea.length
+    
+    for (i=0; i <= text; i++) {
+        var x = textArea[i]
+        localStorage.setItem('text-area', JSON.stringify(x));
+    }
 
     localStorage.setItem('text-area', JSON.stringify(input));
 
