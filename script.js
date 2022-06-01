@@ -13,15 +13,16 @@ function timeBlocks() {
 
     $('.time-block').each(function () {
         var currentHour = parseInt($(this).attr('id'));
+        console.log(currentHour)
 
         //console.log(this)
 
         if (currentHour > hour) {
             $(this).addClass('future');
-        } else if (currentHour === hour) {
-            $(this).addClass('present');
-        } else {
+        } else if (currentHour < hour) {
             $(this).addClass('past');
+        } else {
+            $(this).addClass('present');
         }
     })
 }
@@ -29,13 +30,8 @@ function timeBlocks() {
 function displayData() {
     $('.hour').each(function() {
         var currentHour = $(this).text();
-        var currTextArea = localStorage.getItem(currentHour);
-        
+        var currTextArea = JSON.parse(localStorage.getItem(currentHour));
 
-        if (currTextArea !== null) {
-            //alert('sorry')
-            $(this).siblings('.text-area').val(currTextArea)
-        }
         console.log(currTextArea)
 
     })
@@ -52,7 +48,7 @@ saveBtn.on('click', function () {
     var hour = $(this).parent().attr('id');
 
 
-    localStorage.setItem(hour, text);
+    localStorage.setItem(hour, JSON.stringify(text));
     console.log(hour);
 });
 timeBlocks();
