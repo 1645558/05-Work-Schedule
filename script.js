@@ -25,15 +25,18 @@ function timeBlocks() {
             $(this).addClass('present');
         }
     })
-}
+};
 
 function displayData() {
     $('.hour').each(function() {
-        var currentHour = $(this).text();
+        var currentHour = $(this).parent().attr('id');   
+        console.log(this)
         var currTextArea = JSON.parse(localStorage.getItem(currentHour));
 
+        if (currTextArea !== null) {
+            $(this).siblings('.text-area').val(currTextArea)
+        }
         console.log(currTextArea)
-
     })
 }
 
@@ -51,5 +54,6 @@ saveBtn.on('click', function () {
     localStorage.setItem(hour, JSON.stringify(text));
     console.log(hour);
 });
+
 timeBlocks();
 displayData();
