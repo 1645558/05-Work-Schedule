@@ -19,10 +19,10 @@ function timeBlocks() {
 
         if (currentHour > hour) {
             $(this).addClass('future');
-        } else if (currentHour < hour) {
-            $(this).addClass('past');
-        } else {
+        } else if (currentHour === hour) {
             $(this).addClass('present');
+        } else {
+            $(this).addClass('past');
         }
     })
 };
