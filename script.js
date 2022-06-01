@@ -33,6 +33,7 @@ function displayData() {
         
 
         if (currTextArea !== null) {
+            //alert('sorry')
             $(this).siblings('.text-area').val(currTextArea)
         }
         console.log(currTextArea)
@@ -41,9 +42,9 @@ function displayData() {
 }
 
 //Styling
-$('.text-area').css({ 'width': '1000px', 'height': '75px' });
-$('.time-area').css('border-bottom', '2px dotted');
-$('.saveBtn').css('padding', '28px');
+// $('.text-area').css({ 'width': '1000px', 'height': '75px' });
+// $('.time-area').css('border-bottom', '2px dotted');
+// $('.saveBtn').css('padding', '28px');
 
 //saving input to local storage upon save button click
 saveBtn.on('click', function () {
